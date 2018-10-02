@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "MySQL",
     products: [
-        ........................library(name: "MySQL", targets: ["MySQL"]),
+        .library(name: "MySQL", targets: ["MySQL"]),
     ],
     dependencies: [
         // 🌎 Utility package containing tools for byte manipulation, Codable, OS APIs, and debugging.
