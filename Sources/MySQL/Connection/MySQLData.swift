@@ -217,6 +217,7 @@ public struct MySQLData: Equatable, Encodable {
         switch storage {
         case .text(let data): return data.flatMap { String(data: $0, encoding: .ascii) }
         //    .flatMap { Float80($0) }
+            .flatMap { Float($0) }
             .flatMap { F.init($0) }
         case .binary(let binary):
             switch binary.storage {
@@ -235,6 +236,7 @@ public struct MySQLData: Equatable, Encodable {
                 case .MYSQL_TYPE_VARCHAR, .MYSQL_TYPE_VAR_STRING, .MYSQL_TYPE_STRING, .MYSQL_TYPE_DECIMAL, .MYSQL_TYPE_NEWDECIMAL:
                     return String(data: data, encoding: .ascii)
            //             .flatMap { Float80($0) }
+                        .flatMap { Float($0) }
                         .flatMap { F.init($0) }
                 default: return nil // TODO: support more
                 }
